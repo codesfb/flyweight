@@ -317,9 +317,11 @@ Implementar uma solução em que:
 - uma fábrica reutilize os tipos de fogo existentes;
 - seja possível criar quantidades variadas de chamas sem criar uma aparência nova para cada instância.
 
+O enunciado permanece nesta branch. A implementação resolvida, com código e UML, está na branch [`exercise-solution`](https://github.com/codesfb/flyweight/tree/exercise-solution).
+
 ## Sobre este repositório
 
-### Estrutura atual
+### Estrutura
 
 ```text
 flyweight/
@@ -331,39 +333,41 @@ flyweight/
 ├── diagrams/
 │   ├── Flyweight.png
 │   ├── Flyweight (1).png
-│   └── uml_antes_sem_flyweight.svg
+│   ├── uml_antes_sem_flyweight.svg
+│   └── uml_flyweight_chamas_azul.svg  # na branch exercise-solution
 └── src/
     └── main/
         └── java/
-            ├── main.java
             ├── examples/
-            │   ├── withflyweitgt/
+            │   ├── EspecieArvore.java
+            │   ├── withflyweight/
             │   └── withoutflyweight/
-            └── exercices/
+            └── exercices/             # na branch exercise-solution
 ```
 
-O arquivo `src/main/java/main.java` é uma classe vazia neste estado inicial. Os códigos completos da apresentação estão documentados neste README e ainda não foram incorporados a classes Java separadas no diretório `src`.
+Os exemplos da floresta estão implementados em classes Java. A versão sem Flyweight cria uma cópia do buffer de textura em cada `Arvore`; a versão com Flyweight usa `FabricaArvores` para compartilhar um `TipoArvore` por espécie. Ambas criam 10.000 árvores e apresentam uma estimativa teórica da memória usada pelos buffers.
 
 ### Java e Maven
 
 O projeto usa Maven. Atualmente, `pom.xml` declara Java 27 como versão de compilação. O ambiente utilizado para compilar deve possuir uma JDK compatível.
 
-O projeto está organizado por diretórios preparados para:
-
-- `examples/withoutflyweight`: implementação sem compartilhamento;
-- `examples/withflyweitgt`: implementação com Flyweight;
-- `exercices`: exercício proposto aos participantes.
-
-### Como executar quando os exemplos forem implementados
-
-No diretório raiz:
+Os exemplos podem ser executados separadamente:
 
 ```bash
-mvn compile
-mvn exec:java
+mvn -q package
+java -cp target/classes examples.withoutflyweight.Main
+java -cp target/classes examples.withflyweight.Main
 ```
 
-Como cada exemplo terá sua própria classe `Main`, o comando também poderá ser adaptado para apontar especificamente para a classe desejada.
+O exercício das chamas e sua implementação estão organizados em branches distintas:
+
+```bash
+# Enunciado, na branch principal
+git switch main
+
+# Resolução completa
+git switch exercise-solution
+```
 
 ## Referências
 
