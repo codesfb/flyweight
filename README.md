@@ -334,7 +334,7 @@ flyweight/
 │   ├── Flyweight.png
 │   ├── Flyweight (1).png
 │   ├── uml_antes_sem_flyweight.svg
-│   └── uml_flyweight_chamas_azul.svg  # na branch exercise-solution
+│   └── uml_flyweight_chamas_azul.svg
 └── src/
     └── main/
         └── java/
@@ -342,7 +342,14 @@ flyweight/
             │   ├── EspecieArvore.java
             │   ├── withflyweight/
             │   └── withoutflyweight/
-            └── exercices/             # na branch exercise-solution
+            └── exercices/
+                └── java/
+                    ├── Fire.java
+                    ├── FireFactory.java
+                    ├── FireSprite.java
+                    ├── FireType.java
+                    ├── GameMap.java
+                    └── Main.java
 ```
 
 Os exemplos da floresta estão implementados em classes Java. A versão sem Flyweight cria uma cópia do buffer de textura em cada `Arvore`; a versão com Flyweight usa `FabricaArvores` para compartilhar um `TipoArvore` por espécie. Ambas criam 10.000 árvores e apresentam uma estimativa teórica da memória usada pelos buffers.
@@ -368,6 +375,8 @@ git switch main
 # Resolução completa
 git switch exercise-solution
 ```
+
+Na branch `exercise-solution`, a resolução está no pacote `exercices.java`. `Fire` guarda as coordenadas da chama e uma referência para `FireSprite`; `FireSprite` armazena os dados visuais compartilhados; `FireFactory` mantém um sprite por tipo; `GameMap` valida posições e desenha o mapa; `Main` cria e demonstra as chamas. O diagrama da solução está em [`diagrams/uml_flyweight_chamas_azul.svg`](diagrams/uml_flyweight_chamas_azul.svg).
 
 ## Referências
 
